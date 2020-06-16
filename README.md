@@ -16,6 +16,8 @@ pipenv install
 pipenv run jupyter notebook
 ```
 
+the jupyter notebooks were only used for testing and are not guided processes
+
 ### Vue.js / JsonSchemaForm
 
 open jsonform.html in your prefered browser (only tested in brave)
