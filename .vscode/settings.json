@@ -1,0 +1,6 @@
+{
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.pythonPath": "/Users/obi/.local/share/virtualenvs/pud-2020-A32_uhK5"
+}

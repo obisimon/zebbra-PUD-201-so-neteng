@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css"
+      rel="stylesheet"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@koumoul/vjsf@latest/dist/main.css"
+    />
+  </head>
+  <body>
+    <div id="app">
+      <v-app>
+        <v-main>
+          <v-container>
+              <v-form>
+              <v-jsf v-model="dataModel" :schema="schema"/> 
+              </v-form>
+              <br />
+              <pre>
+{{ prettyModel }}
+              </pre>
+          </v-container>
+        </v-main>
+      </v-app>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@koumoul/vjsf@latest/dist/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@koumoul/vjsf@latest/dist/third-party.js"></script>
+
+    <script>
+      Vue.component('VJsf', VJsf.default)
+      new Vue({
+        el: "#app",
+        vuetify: new Vuetify(),
+      
+        data: {
+          schema: {
+            $id: "https://neops.io/schema/example.json",
+            $schema: "http://json-schema.org/draft-07/schema#",
+            title: "Demo Form JSON Schma",
+            type: "object",
+            required: ["foo", "bar"],
+            properties: {
+              foo: {
+                title: "Foo",
+                type: "string",
+                description: "Foo rendered as normal input field",
+              },
+              bar: {
+                title: "Bar",
+                type: "string",
+                description: "as select",
+                enum: ['foo', 'bar']
+              },
+              bool: {
+                title: "bool",
+                type: "boolean",
+                description: "boolean is rendered as checkbox",
+              },
+            },
+          },
+          dataModel: {},
+        },
+        computed: {
+            prettyModel: function () {
+                return JSON.stringify(this.dataModel, null, 2);
+            }
+        }
+      });
+    </script>
+  </body>
+</html>
